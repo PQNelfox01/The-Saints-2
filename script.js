@@ -2,7 +2,7 @@
 function preloadImages(players) {
     players.forEach(player => {
         const img = new Image();
-        img.src = `assets/images/players/${player.id}.png`; // Corregido: player.id en lugar de players.id
+        img.src = `assets/images/players/${player.img}`;
     });
 }
 
@@ -18,10 +18,10 @@ function loadAndDisplayPlayers() {
         .then(data => {
             preloadImages(data.players);
             displayPlayers(data.players);
+            setupCardAnimations();
         })
         .catch(error => {
             console.error('Error al cargar los datos:', error);
-            // Mostrar mensaje de error al usuario
             const container = document.getElementById('playersContainer');
             container.innerHTML = `
                 <div class="error-message">
@@ -36,7 +36,7 @@ function loadAndDisplayPlayers() {
 // Función para mostrar los jugadores
 function displayPlayers(players) {
     const container = document.getElementById('playersContainer');
-    container.innerHTML = ''; // Limpiar contenedor primero
+    container.innerHTML = '';
 
     players.forEach(player => {
         const playerCard = document.createElement('div');
@@ -71,20 +71,63 @@ function displayPlayers(players) {
     });
 }
 
-// Función auxiliar para generar el HTML de las estadísticas
+// Función para generar HTML de estadísticas con barras animadas
 function generateStatsHTML(stats) {
-    const statItems = [
-        { label: 'Goles', value: stats.goals },
-        { label: 'Asistencias', value: stats.assists },
-        { label: 'Atajadas', value: stats.saves }
-    ];
-    
-    return statItems.map(stat => `
+    return `
         <div class="stat-item">
-            <span>${stat.label}:</span>
-            <span>${stat.value}</span>
+            <span>Goles</span>
+            <div class="stat-bar-container">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" style="--width: ${stats.goals}%"></div>
+                </div>
+                <span class="stat-value">${stats.goals}%</span>
+            </div>
         </div>
-    `).join('');
+        <div class="stat-item">
+            <span>Asistencias</span>
+            <div class="stat-bar-container">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" style="--width: ${stats.assists}%"></div>
+                </div>
+                <span class="stat-value">${stats.assists}%</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <span>Atajadas</span>
+            <div class="stat-bar-container">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" style="--width: ${stats.saves}%"></div>
+                </div>
+                <span class="stat-value">${stats.saves}%</span>
+            </div>
+        </div>
+    `;
+}
+
+// Configurar animaciones al voltear las tarjetas
+function setupCardAnimations() {
+    const cards = document.querySelectorAll('.player-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Activar animaciones cuando se voltea la tarjeta
+            if (this.classList.contains('flipped')) {
+                this.classList.add('active');
+            }
+        });
+        
+        // Observar cuando la tarjeta entra en la vista
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(card);
+    });
 }
 
 // Iniciar cuando el DOM esté listo

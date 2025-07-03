@@ -65,7 +65,6 @@ header {
 
 /* Player card styles */
 .player-card {
-    border: 1px solid red;
     perspective: 1000px;
     height: 25rem;
     cursor: pointer;
@@ -156,16 +155,24 @@ header {
 
 .stats-container {
     flex-grow: 1;
-    padding: 0.625rem 0;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
 }
 
 .stat-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.625rem;
-    padding-bottom: 0.3125rem;
-    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.95rem;
+}
+
+.stat-item span:first-child {
+    display: block;
+    font-size: 0.85rem;
+    color: #c1d8ff;
+    margin-bottom: 0.3rem;
 }
 
 /* Link styles */
@@ -174,12 +181,13 @@ header {
     background-color: var(--accent-red);
     color: var(--white);
     text-align: center;
-    padding: 0.625rem;
+    padding: 0.5rem;
     border-radius: 0.3125rem;
     text-decoration: none;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
     transition: all 0.3s ease;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
 .tracker-link:hover, 
@@ -209,6 +217,20 @@ footer a:hover {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .stat-item {
+        margin-bottom: 0.7rem;
+        padding-bottom: 0.7rem;
+    }
+
+    .stat-bar {
+        height: 6px;
+    }
+
+    .stat-value {
+        font-size: 0.8rem;
+        min-width: 40px;
+    }
+
     .players-grid {
         grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
     }
@@ -283,4 +305,80 @@ footer a:hover {
 
 .player-image.loaded ~ .card-front::after {
     display: none;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.stat-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-bar {
+    flex-grow: 1;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-red), #ff6b81);
+    border-radius: 4px;
+    transition: width 1.5s ease-out;
+}
+
+.stat-value {
+    min-width: 45px;
+    text-align: right;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-red);
+}
+
+/* Efecto de brillo en la barra */
+.stat-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 3s infinite;
+    opacity: 0;
+}
+
+/* Animaciones */
+@keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Cuando la tarjeta está activa */
+.player-card.active .stat-bar-fill {
+    width: var(--width);
+}
+
+.player-card.active .stat-value {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.player-card.active .stat-bar-fill::after {
+    opacity: 0.5;
 }

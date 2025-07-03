@@ -1,0 +1,535 @@
+HTML ACTUAL:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Saints - Rocket League Clan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section class="players-stats">
+            <h2>Estadísticas del Clan</h2>
+            <div class="players-grid" id="playersContainer">
+                <!-- Las tarjetas se generan en JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 The Saints Rocket League Clan. Todos los derechos reservados.</p>
+        <p>Datos proporcionados por <a href="https://rocketleague.tracker.network/" target="_blank" rel="noopener noreferrer">Tracker Network</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+CSS ACTUAL:
+
+:root {
+    /* Variables de color para fácil mantenimiento */
+    --dark-blue: #1a1a2e;
+    --darker-blue: #16213e;
+    --navy-blue: #0f3460;
+    --accent-red: #e94560;
+    --darker-red: #c2334d;
+    --white: #ffffff;
+    --light-gray: rgba(255, 255, 255, 0.1);
+}
+
+/* Reset y estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styles */
+header {
+    background-color: var(--darker-blue);
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    height: 5rem;
+    margin-bottom: 0.625rem;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Main content */
+.players-stats {
+    padding: 1.25rem;
+    max-width: 75rem;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+}
+
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 1.875rem;
+}
+
+/* Player card styles */
+.player-card {
+    border: 1px solid red;
+    perspective: 1000px;
+    height: 25rem;
+    cursor: pointer;
+}
+
+.player-desc {
+    font-style: italic;
+    color: #a1a1a1;
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+.player-hours:empty {
+    display: none;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.player-card:hover .card-inner,
+.player-card:focus .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0.625rem;
+    overflow: hidden;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    border: 1px solid blue;
+}
+
+.card-front {
+    background-color: var(--navy-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+}
+
+.card-back {
+    background-color: var(--darker-blue);
+    transform: rotateY(180deg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image styles */
+.player-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #e94560;
+    margin-bottom: 20px;
+    display: block; /* Importante */
+    background-color: #0f3460; /* Fondo por si la imagen no carga */
+}
+
+.player-image.loaded {
+    opacity: 1;
+}
+
+.player-card:hover .player-image {
+    transform: scale(1.05);
+}
+
+/* Text styles */
+.player-name {
+    font-size: 1.5rem;
+    margin: 0.625rem 0;
+    color: var(--accent-red);
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.stats-container {
+    flex-grow: 1;
+    padding: 0.625rem 0;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.625rem;
+    padding-bottom: 0.3125rem;
+    border-bottom: 1px solid var(--light-gray);
+    font-size: 0.95rem;
+}
+
+/* Link styles */
+.tracker-link {
+    display: block;
+    background-color: var(--accent-red);
+    color: var(--white);
+    text-align: center;
+    padding: 0.625rem;
+    border-radius: 0.3125rem;
+    text-decoration: none;
+    margin-top: 1.25rem;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.tracker-link:hover, 
+.tracker-link:focus {
+    background-color: var(--darker-red);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 1.25rem;
+    background-color: var(--darker-blue);
+    margin-top: auto;
+}
+
+footer a {
+    color: var(--accent-red);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .players-grid {
+        grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
+    }
+    
+    .player-card {
+        height: 22rem;
+    }
+    
+    .player-image {
+        width: 8rem;
+        height: 8rem;
+    }
+    
+    .player-name {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo {
+        height: 4rem;
+    }
+}
+
+/* Animaciones adicionales */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.player-card {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Mejoras de accesibilidad */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Efecto de carga */
+.card-front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(110deg, #0f3460 8%, #1a4b8c 18%, #0f3460 33%);
+    background-size: 200% 100%;
+    animation: 1.5s shine linear infinite;
+    border-radius: 0.625rem;
+    opacity: 0.7;
+}
+
+@keyframes shine {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+.player-image.loaded ~ .card-front::after {
+    display: none;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.stat-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0.3rem;
+}
+
+.stat-bar {
+    flex-grow: 1;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-red), var(--darker-red));
+    border-radius: 5px;
+    transition: width 1.5s ease-out;
+}
+
+.stat-value {
+    min-width: 45px;
+    text-align: right;
+    font-weight: bold;
+    color: var(--accent-red);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.5s ease-out;
+}
+
+/* Efecto de brillo en la barra */
+.stat-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 2.5s infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Animaciones */
+@keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Cuando la tarjeta está activa */
+.player-card.active .stat-bar-fill {
+    width: var(--width);
+}
+
+.player-card.active .stat-value {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.player-card.active .stat-bar-fill::after {
+    opacity: 1;
+}
+
+JS ACTUAL:
+
+// Función para precargar imágenes
+function preloadImages(players) {
+    players.forEach(player => {
+        const img = new Image();
+        img.src = `assets/images/players/${player.img}`;
+    });
+}
+
+// Función principal para cargar y mostrar datos
+function loadAndDisplayPlayers() {
+    fetch('players.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            preloadImages(data.players);
+            displayPlayers(data.players);
+            setupCardAnimations();
+        })
+        .catch(error => {
+            console.error('Error al cargar los datos:', error);
+            const container = document.getElementById('playersContainer');
+            container.innerHTML = `
+                <div class="error-message">
+                    <p>No se pudieron cargar los datos de los jugadores.</p>
+                    <p>Por favor, intenta recargar la página.</p>
+                    <p>Error: ${error.message}</p>
+                </div>
+            `;
+        });
+}
+
+// Función para mostrar los jugadores
+function displayPlayers(players) {
+    const container = document.getElementById('playersContainer');
+    container.innerHTML = '';
+
+    players.forEach(player => {
+        const playerCard = document.createElement('div');
+        playerCard.className = 'player-card';
+
+        playerCard.innerHTML = `
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="assets/images/players/${player.img}" 
+                         alt="${player.name}" 
+                         class="player-image"
+                         loading="lazy"
+                         onerror="this.onerror=null;this.src='assets/images/players/default.png'">
+                    <h3 class="player-name">${player.name}</h3>
+                    <p class="player-desc">${player.description}</p>
+                    ${player.hours_played ? `<p class="player-hours">Horas jugadas: ${player.hours_played}</p>` : ''}
+                </div>
+                <div class="card-back">
+                    <h3 class="player-name">${player.name}</h3>
+                    <p class="player-desc">${player.description}</p>
+                    <div class="stats-container">
+                        ${generateStatsHTML(player.stats)}
+                    </div>
+                    <a href="${player.tracker_url}" target="_blank" rel="noopener noreferrer" class="tracker-link">
+                        Ver perfil en Tracker Network
+                    </a>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(playerCard);
+    });
+}
+
+// Función para generar HTML de estadísticas con barras animadas
+function generateStatsHTML(stats) {
+    return `
+        <div class="stat-item">
+            <span>Goles</span>
+            <div class="stat-bar-container">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" style="--width: ${stats.goals}%"></div>
+                </div>
+                <span class="stat-value">${stats.goals}%</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <span>Asistencias</span>
+            <div class="stat-bar-container">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" style="--width: ${stats.assists}%"></div>
+                </div>
+                <span class="stat-value">${stats.assists}%</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <span>Atajadas</span>
+            <div class="stat-bar-container">
+                <div class="stat-bar">
+                    <div class="stat-bar-fill" style="--width: ${stats.saves}%"></div>
+                </div>
+                <span class="stat-value">${stats.saves}%</span>
+            </div>
+        </div>
+    `;
+}
+
+// Configurar animaciones al voltear las tarjetas
+function setupCardAnimations() {
+    const cards = document.querySelectorAll('.player-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            // Activar animaciones cuando se voltea la tarjeta
+            if (this.classList.contains('flipped')) {
+                this.classList.add('active');
+            }
+        });
+        
+        // Observar cuando la tarjeta entra en la vista
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(card);
+    });
+}
+
+// Iniciar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', loadAndDisplayPlayers);
