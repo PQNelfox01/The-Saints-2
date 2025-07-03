@@ -1,0 +1,55 @@
+/* lobby.css */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a2e;
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.lobby-container {
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.lobby-logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+    transition: transform 0.5s ease;
+}
+
+.lobby-logo:hover {
+    transform: scale(1.05);
+}
+
+.enter-btn {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.enter-btn:hover {
+    background-color: #c2334d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

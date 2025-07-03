@@ -1,0 +1,124 @@
+{
+  "players": [
+    {
+      "id": "ziir",
+      "name": "Ziir",
+      "description": "Rey de la rotación.",
+      "hours_played": 2900,
+      "img": "ziir.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/steam/76561198091825758/overview"
+    },
+    {
+      "id": "bksp",
+      "name": "Bksp",
+      "description": "El Lloressy",
+      "hours_played": 2945,
+      "img": "bksp.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/epic/Bksp/overview"
+    },
+    {
+      "id": "rkx",
+      "name": "R.K.X",
+      "description": "Turbo Roka",
+      "hours_played": 2970,
+      "img": "rkx.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/epic/R%20.%20K%20.%20X/overview"
+    },
+    {
+      "id": "kenkyomasu",
+      "name": "Kenkyomasu",
+      "description": "El ser incomprendido.",
+      "hours_played": 2718,
+      "img": "kenkyo.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/epic/kenkyomasu/overview"
+    },
+    {
+      "id": "alejjoh",
+      "name": "Alejjoh",
+      "description": "El Parce",
+      "hours_played": null,
+      "img": "alejjohorny.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/xbl/alejjoh/overview"
+    },
+    {
+      "id": "claudioxzt2",
+      "name": "Claudioxzt2",
+      "description": "Qué terrible chiquillos.",
+      "hours_played": 1967,
+      "img": "claudioxzt2.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/steam/76561198145230003/overview"
+    },
+    {
+      "id": "palasutro",
+      "name": "Palasutro",
+      "description": "Faker",
+      "hours_played": 1748,
+      "img": "palasutro.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/epic/Fernando_pala/overview"
+    },
+    {
+      "id": "pqnelfox01",
+      "name": "PQNelfox01",
+      "description": "El Mute",
+      "hours_played": 1927,
+      "img": "pqnelfox01.png",
+      "stats": {
+        "goals": 47.98,
+        "assists": 18.27,
+        "saves": 33.75,
+        "shots": 0,
+        "mvps": 0
+      },
+      "tracker_url": "https://rocketleague.tracker.network/rocket-league/profile/epic/Tochka-U/overview"
+    }
+  ]
+}
