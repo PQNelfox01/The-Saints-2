@@ -5,7 +5,7 @@
       "name": "Ziir",
       "description": "Rey de la rotación.",
       "hours_played": 2900,
-      "img": "ziir.png",
+      "img": "/assets/images/players/ziir.png",
       "stats": {
         "goals": 47.99,
         "assists": 18.27,

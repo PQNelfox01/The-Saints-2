@@ -1,0 +1,23 @@
+The-Saints-2
+|
+|-/assets
+|  |-/fonts
+|  |-/images
+|    |-/favicon /*todas las imagenes de formato favicon*/
+|    |-/players /* todas las imagenes de jugadores */
+|    |- logo_SNTS.jpg
+|
+|
+|-/frontend
+|   |-/css /* Todos los css de las paginas secundarias */
+|   |-/html /* Todas los html de las paginas secundarias */   
+|   |-/JS
+|      |-script.js
+|
+|
+|-.gitattributes
+|-.txt ~ Lo uso solamente para escribir cosas. * No es definitivo * ~
+|- lobby.css (.css del lobby.html)
+|- lobby.html (pagina de recepcion la que quiero que se muestre primero)
+|- players.json
+|- README.md
