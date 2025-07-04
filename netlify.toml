@@ -1,4 +1,5 @@
 [[redirects]]
-    from = "/"
-    to = "/lobby.html"
-    status = 200
+  from = "/"
+  to = "/lobby.html"
+  status = 200
+  force = true  # Fuerza a mostrar lobby.html incluso si existe index.html
