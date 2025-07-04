@@ -49,6 +49,7 @@ function displayPlayers(players) {
                          alt="${player.name}" 
                          class="player-image"
                          loading="lazy"
+                         onerror="this.onerror=null;this.src='assets/images/players/default.png'">
                     <h3 class="player-name">${player.name}</h3>
                     <p class="player-desc">${player.description}</p>
                     ${player.hours_played ? `<p class="player-hours">Horas jugadas: ${player.hours_played}</p>` : ''}
