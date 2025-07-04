@@ -8,7 +8,7 @@ function preloadImages(players) {
 
 // Función principal para cargar y mostrar datos
 function loadAndDisplayPlayers() {
-    fetch('players.json')
+    fetch('/players.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
