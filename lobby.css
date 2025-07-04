@@ -1,16 +1,31 @@
 /* lobby.css */
-/* BODY */
-body {
+
+:root {
+    /* Variables de color para fácil mantenimiento */
+    --dark-blue: #1a1a2e;
+    --darker-blue: #16213e;
+    --navy-blue: #0f3460;
+    --accent-red: #e94560;
+    --darker-red: #c2334d;
+    --white: #ffffff;
+    --light-gray: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1a2e;
-    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+}
+
+/* BODY */
+body {
     font-family: 'Arial', sans-serif;
-    overflow: hidden;
+    line-height: 1.6;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* LOGO */
