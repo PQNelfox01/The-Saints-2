@@ -11,29 +11,13 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    <div class="lobby-container">
-        <img src="assets/images/logo_SNTS.jpg" alt="The Saints Logo" class="lobby-logo">
-        <button class="enter-btn" id="enterButton">ENTRAR</button>
-    </div>
+    
+    <a href="index.html">
+        <img src="/assets/images/logo_SNTS.jpg" alt="Logo del Clan" class="logo-clan">
+    </a>
 
-    <script>
-        document.getElementById('enterButton').addEventListener('click', function() {
-            // Efecto de transición antes de redirigir
-            document.body.style.animation = 'fadeOut 0.5s ease forwards';
-            
-            setTimeout(function() {
-                window.location.href = 'index.html';
-            }, 500);
-            
-            // Crear la animación de fadeOut dinámicamente
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes fadeOut {
-                    to { opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-        });
-    </script>
+    <footer>
+        <p>&copy; 2025 The Saints Rocket League Clan. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

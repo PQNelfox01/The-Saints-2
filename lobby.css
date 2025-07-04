@@ -1,4 +1,5 @@
 /* lobby.css */
+/* BODY */
 body {
     margin: 0;
     padding: 0;
@@ -12,44 +13,37 @@ body {
     overflow: hidden;
 }
 
-.lobby-container {
-    text-align: center;
-    animation: fadeIn 1.5s ease-out;
+/* LOGO */
+
+a {
+    display: inline-block;
+    text-decoration: none;
 }
 
-.lobby-logo {
-    width: 300px;
+.logo-clan {
+    width: 120px;
     height: auto;
-    margin-bottom: 30px;
-    transition: transform 0.5s ease;
+    cursor: pointer;
 }
 
 .lobby-logo:hover {
-    transform: scale(1.05);
+    opacity: 0.8;
 }
 
-.enter-btn {
-    background-color: #e94560;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 18px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1.25rem;
+    background-color: var(--dark-blue);
+    margin-top: auto;
 }
 
-.enter-btn:hover {
-    background-color: #c2334d;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+footer a {
+    color: var(--accent-red);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+footer a:hover {
+    text-decoration: underline;
 }
