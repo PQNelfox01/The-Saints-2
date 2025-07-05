@@ -2,7 +2,7 @@
 function preloadImages(players) {
     players.forEach(player => {
         const img = new Image();
-        img.src = `assets/images/players/${player.img}`;
+        img.src = `/assets/images/players/${player.img}`;
     });
 }
 
@@ -45,11 +45,9 @@ function displayPlayers(players) {
         playerCard.innerHTML = `
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="assets/images/players/${player.img}" 
-                         alt="${player.name}" 
-                         class="player-image"
-                         loading="lazy"
-                         onerror="this.onerror=null;this.src='assets/images/players/default.png'">
+                    <img src="/assets/images/players/${player.img}" 
+                         alt="${player.name}"
+                         onerror="this.onerror=null; this.classList.add('broken-image'); this.src='/assets/images/players/default.png'">
                     <h3 class="player-name">${player.name}</h3>
                     <p class="player-desc">${player.description}</p>
                     ${player.hours_played ? `<p class="player-hours">Horas jugadas: ${player.hours_played}</p>` : ''}
