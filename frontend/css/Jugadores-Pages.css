@@ -133,10 +133,10 @@ header {
 
 /* Image styles */
 .player-image {
-    width: 200px;
-    height: 200px;
-    min-width: 200px;
-    min-height: 200px;
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
