@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Saints || Oculto</title>
+    <title>Galería The Saints</title>
     <link rel="stylesheet" href="/frontend/css/oculto.css">
 </head>
 <body>
+
     <nav class="main-nav">
         <ul class="nav-list">
             <li><a href="/" class="nav-link active"><i class="fas fa-home"></i>Inicio</a></li>
-            <li><a href="#" class="nav-link active"><i class="fas fa-home"></i>Imagenes</a></li>
-            <li><a href="#" class="nav-link active"><i class="fas fa-home"></i>Videos</a></li>
+            <li><a href="/frontend/html/Tablas.html" class="nav-link active"><i class="fas fa-home"></i>Tablas</a></li>
+            <li><a href="#" class="nav-link active"><i class="fas fa-home"></i>Sobre Nosotros</a></li>
         </ul>
         <div class="nav-buttons">
             <a href="/frontend/html/Oculto.html" class="logo-link">
@@ -20,8 +21,16 @@
         </div>
     </nav>
 
-    <footer>
-        <p>&copy; 2025 The Saints Rocket League Clan. Todos los derechos reservados.</p>
-    </footer>
+    <div class="gallery">
+        <!-- Imágenes cargadas dinámicamente con JS -->
+    </div>
+
+    <!-- Lightbox para vista ampliada -->
+    <div class="lightbox">
+        <span class="close">&times;</span>
+        <img src="" alt="" class="lightbox-img">
+    </div>
+
+    <script src="/frontend/JS/Oculto.js"></script>
 </body>
 </html>
