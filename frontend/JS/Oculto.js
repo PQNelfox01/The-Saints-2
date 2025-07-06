@@ -3,6 +3,11 @@ const images = [
     "/assets/images/gallery/imagen1.png",
     "/assets/images/gallery/imagen2.png",
     "/assets/images/gallery/imagen3.png",
+    "/assets/images/gallery/imagen4.png",
+    "/assets/images/gallery/imagen5.png",
+    "/assets/images/gallery/imagen6.png",
+    "/assets/images/gallery/imagen7.png",
+    "/assets/images/gallery/imagen8.png",
     // Añade más rutas...
 ];
 
