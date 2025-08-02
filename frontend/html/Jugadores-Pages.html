@@ -39,5 +39,19 @@
     </footer>
 
     <script src="/frontend/JS/script.js"></script>
+    <script src="../JS/rocketLeagueApiGlobal.js"></script>
+    <script>(async () => {
+      const outputEl = document.getElementById('output');
+      try {
+        // Llama a la función global sin importar módulos
+        const data = await fetchRocketLeagueProfile('epic', 'R . K . X');
+        // outputEl.textContent = JSON.stringify(data, null, 2);
+        console.log(data);
+        const playersContainer = document.getElementById('playersContainer');
+      } catch (err) {
+        console.error('Error fetching profile:', err);
+        outputEl.textContent = `Error: ${err.message}`;
+      }
+    })();</script>
 </body>
 </html>
